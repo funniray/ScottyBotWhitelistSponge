@@ -15,6 +15,7 @@ public class Config {
 
     public static int id = -1;
     public static String message = "Please go to Mixer and run \"!whitelistme %name%\" in the appropriate chat.";
+    public static boolean sublist = false;
 
     private static Path defaultConfig;
     private static Logger logger;
@@ -52,6 +53,7 @@ public class Config {
                 localConfig = loader.load();
                 id = localConfig.getNode("id").getInt();
                 message = localConfig.getNode("message").getString();
+                sublist = localConfig.getNode("sublist").getBoolean();
             } catch (IOException e) {
                 e.printStackTrace();
             }

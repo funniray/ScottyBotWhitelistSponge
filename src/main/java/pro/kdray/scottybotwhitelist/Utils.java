@@ -69,7 +69,11 @@ public class Utils {
     public static void reloadUsers() {
         String users;
         try {
-            users = getHTTP("https://api.scottybot.net/api/whitelist?channame=" + Config.id);
+            if (Config.sublist) {
+                users = getHTTP("https://api.scottybot.net/api/sublist?channame=" + Config.id);
+            } else {
+                users = getHTTP("https://api.scottybot.net/api/whitelist?channame=" + Config.id);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return;
