@@ -38,12 +38,6 @@ public class Config {
             }
         }
 
-        if (Files.notExists(defaultConfig)) {
-            logger.info("Config doesn't exist after loading default Config");
-        } else {
-            logger.info("Path is: " + defaultConfig.toFile().getAbsolutePath());
-        }
-
         loader = HoconConfigurationLoader.builder().setPath(defaultConfig).build();
 
         ConfigurationNode localConfig;

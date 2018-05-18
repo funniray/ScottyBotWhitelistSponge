@@ -2,6 +2,8 @@ package pro.kdray.scottybotwhitelist;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.action.TextActions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -82,5 +84,17 @@ public class Utils {
         }.getType();
 
         Utils.users = new Gson().fromJson(users, listType);
+    }
+
+    public static Text getUserList() {
+        Text.Builder mainText = Text.builder();
+        for (MixerUser user : users.values()) {
+            mainText.append(Text.builder(user.mcname)
+                    .onHover(TextActions.showText(Text.of("Mixer Name: " + user.beamname + "\nExpires: " + user.UserFriendlyDate)))
+                    .append(Text.of(", "))
+                    .build());
+        }
+        mainText.append(Text.of("(" + users.size() + ")"));
+        return mainText.build();
     }
 }
