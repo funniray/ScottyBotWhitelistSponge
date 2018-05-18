@@ -90,7 +90,7 @@ public class Utils {
         Text.Builder mainText = Text.builder();
         for (MixerUser user : users.values()) {
             mainText.append(Text.builder(user.mcname)
-                    .onHover(TextActions.showText(Text.of("Mixer Name: " + user.beamname + "\nExpires: " + user.UserFriendlyDate)))
+                    .onHover(TextActions.showText(Text.of("Mixer Name: " + user.beamname + "\nExpires: " + ((user.UserFriendlyDate == null) ? "Never" : user.UserFriendlyDate))))
                     .append(Text.of(", "))
                     .build());
         }
